@@ -1,0 +1,55 @@
+.login-form {
+    width: 400px;
+    height: 100%;
+    margin: 50px auto;
+
+}
+.login-form form {
+    margin-bottom: 15px;
+    background: #1C00ff00;
+    padding: 30px;
+    border-radius: 5    px;
+}
+.login-form h2 {
+    margin: 0 0 15px;
+}
+.form-control, .btn {
+    min-height: 38px;
+    border-radius: 2px;
+}
+
+.two-col{
+    overflow: hidden;
+}
+.two-col .col1,
+.two-col .col2{
+    width: 49%;
+}
+.two-col .col1{
+    float: left;
+}
+.two-col .col2{
+    float: right;
+}
+.btn {        
+    font-size: 15px;
+    font-weight: bold;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+}
+.parallax { 
+    /* The image used */
+    background-image: url("../../assets/images/login-background.jpg");
+
+    /* Set a specific height */
+    height:100%; 
+    display: block;
+    overflow: auto;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
+  }

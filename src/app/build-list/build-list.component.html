@@ -1,0 +1,40 @@
+<div class="table-striped">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Build Name</th>
+                <th scope="col">Created By</th>
+                <th scope="col">CPU</th>
+                <th scope="col">Motherboard</th>
+                <th scope="col">RAM</th>
+                <th scope="col">GPU</th>
+                <th scope="col">SMPS</th>
+                <th scope="col">Case</th>
+                <th scope="col">Cooler</th> 
+                <th scope="col">SSD</th>
+                <th scope="col">HDD</th>
+                <th scope="col">WifiCard</th>
+                <th scope="col">Creation Date</th>
+                <th scope="col">Total Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let build of buildlist">
+                <td>{{build.name}}</td>
+                <td>{{build.user.name}}</td>
+                <td>{{build.cpu_id}}</td>
+                <td>{{build.mb_id}}</td>
+                <td>{{build.ram_id}}</td>
+                <td>{{build.gpu_id}}</td>
+                <td>{{build.smps_id}}</td>
+                <td>{{build.case_id}}</td>
+                <td>{{build.cooler_id}}</td>
+                <td>{{build.ssd_id}}</td>
+                <td>{{build.hdd_id}}</td>
+                <td>{{build.wificard_id}}</td>
+                <td>{{build.date_creted}}</td>
+                <td>{{build.price}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>

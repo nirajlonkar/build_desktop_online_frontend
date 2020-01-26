@@ -1,0 +1,33 @@
+<div class="parallax col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height:100vh">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="login-form">
+                <form (ngSubmit)="EditComp()">
+                    <h2 class="text-center" style="color: aliceblue">Add New Component</h2>
+                    <div class="form-group">
+                        <input [(ngModel)]="c.id" name="id" type="text" class="form-control" value="{{component.id}}" readonly>
+                    </div>       
+                    <div class="form-group">
+                        <input [(ngModel)]="c.manufacturer" name="manufacturer" type="text" class="form-control" value="{{component.manufacturer}}" placeholder="Manufacturer" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="c.name" name="name" type="text" class="form-control" value="{{component.name}}" placeholder="Name" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="c.model_no" name="model_no" type="text" class="form-control" value="{{component.model_no}}" placeholder="Model NO" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="c.price" name="price" type="number" class="form-control" value="{{component.price}}" placeholder="Price" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="c.type" name="type" type="text" class="form-control" value="{{component.type}}" placeholder="Type" required="required">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Update Component</button>
+                    </div>
+                    <div class="form-group">
+                        <span class="label label-danger">{{message}}</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

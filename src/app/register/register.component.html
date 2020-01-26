@@ -1,0 +1,31 @@
+<html>
+<body>
+    <div class="parallax col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height:100vh">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="login-form">
+                <form #myForm="ngForm">
+                    <h2 class="text-center" style="color: aliceblue">Register</h2>       
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="userdetails.name" class="form-control" name= "name" placeholder="Name" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" [(ngModel)]="userdetails.email" class="form-control" name= "email" placeholder="Email" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="userdetails.contact" class="form-control" name= "contact" placeholder="Contact No." required="required">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" [(ngModel)]="userdetails.password" class="form-control" name= "password" placeholder="Password" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name= "pass" placeholder="Confirm Password" required="required">
+                    </div>
+                    <div class="form-group">
+                        <button (click)="onSignup()" class="btn btn-primary btn-block">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>  
+</body>
+</html>

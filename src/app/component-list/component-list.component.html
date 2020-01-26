@@ -1,0 +1,33 @@
+<div class="table-striped">
+        <table class="table">
+            <col width=1%>
+            <thead style="text-align: center">
+            <tr>
+                <th class="col-sp-2" scope="col">Id</th>
+                <th scope="col">Type</th>
+                <th scope="col">Name</th>
+                <th scope="col">Model</th>
+                <th scope="col">Description</th>
+                <th scope="col">Image</th>
+                <th scope="col">Price</th> 
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let c of component">
+                <td class="center">{{c.id}}</td>
+                <td class="center">{{c.type}}</td>
+                <td>{{c.name}}</td>
+                <td>{{c.model_no}}</td>
+                <td>{{c.desc}}</td>
+                <td>{{c.image}}</td>
+                <td class="center">{{c.price}}</td>
+                <td class="center">
+                    <a class="btn btn-danger" routerLink="/delete-component/{{c.id}}">Delete</a>
+                    <a class="btn btn-info" routerLink="/edit-component/{{c.id}}">Edit</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div><button (click)="AddNew()" class="btn btn-primary" style="width: 100%">Add Component</button></div>
+    </div>

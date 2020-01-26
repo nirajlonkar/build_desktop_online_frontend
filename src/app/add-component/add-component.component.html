@@ -1,0 +1,30 @@
+<div class="parallax col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height:100vh">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="login-form">
+            <form>
+                <h2 class="text-center" style="color: aliceblue">Add New Component</h2>       
+                <div class="form-group">
+                    <input [(ngModel)]="component.manufacturer" name="manufacturer" type="text" class="form-control" placeholder="Manufacturer" required="required">
+                </div>
+                <div class="form-group">
+                    <input [(ngModel)]="component.name" name="name" type="text" class="form-control" placeholder="Name" required="required">
+                </div>
+                <div class="form-group">
+                    <input [(ngModel)]="component.model_no" name="model_no" type="text" class="form-control" placeholder="Model NO" required="required">
+                </div>
+                <div class="form-group">
+                    <input [(ngModel)]="component.price" name="price" type="number" class="form-control" placeholder="Price" required="required">
+                </div>
+                <div class="form-group">
+                    <input [(ngModel)]="component.type" name="type" type="text" class="form-control" placeholder="Type " required="required">
+                </div>
+                <div class="form-group">
+                    <button (click)="AddComp()" class="btn btn-primary">Add Component</button>
+                </div>
+                <div class="form-group">
+                    <span class="label label-danger">{{message}}</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

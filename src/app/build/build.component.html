@@ -1,0 +1,150 @@
+<script>
+    $('body').on('click', 'input.btn', function(e) {
+	var txt;
+	e.preventDefault();
+	txt = $(this).parent().prev().prev().text();
+	alert(txt);
+    })
+</script>
+<div class="center">
+    <table class="table table-striped table-hover center">
+        <thead style="text-align: center">
+        <tr style="width: 100%">
+            <th scope="col">Component</th>
+            <th scope="col">Selection</th>
+            <th scope="col">Price</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>CPU</td>
+            <td>{{cpu.name}}</td>
+            <td>{{cpu.price}}</td>
+            <!-- <td><a class="btn btn-info" routerLink='/home/select-component/CPU'>Choose CPU</a></td> -->
+            <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info widthbtn" routerLink="/home/select-component/CPU">Choose Processor</button>
+                        <button type="button" class="btn btn-danger" (click)="RemoveComp('CPU')">Remove</button>
+                    </div>
+            </td>
+        </tr>
+        <tr>
+            <td>GPU</td>
+            <td>{{gpu.name}}</td>
+            <td>{{gpu.price}}</td>
+            <!-- <td class="col-lg-1"><a class="btn btn-info" [routerLink]="['/home/select-component/GPU']">Choose GPU</a></td> -->
+            <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info widthbtn" routerLink="/home/select-component/GPU">Choose Graphics Card</button>
+                        <button type="button" class="btn btn-danger" (click)="RemoveComp('GPU')">Remove</button>
+                    </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Motherboard</td>
+            <td>{{mb.name}}</td>
+            <td>{{mb.price}}</td>
+            <!-- <td class="col-lg-1"><a class="btn btn-info" [routerLink]="['/home/select-component/MB']">Choose Motherboard</a></td> -->
+            <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info widthbtn" routerLink="/home/select-component/MB">Choose Motherboard</button>
+                        <button type="button" class="btn btn-danger" (click)="RemoveComp('MB')">Remove</button>
+                    </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Memory</td>
+            <td>{{ram.name}}</td>
+            <td>{{ram.price}}</td>
+            <!-- <td class="col-lg-1"><a class="btn btn-info" [routerLink]="['/home/select-component/RAM']">Choose Memory</a></td> -->
+            <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info widthbtn" routerLink="/home/select-component/RAM">Choose Memory</button>
+                        <button type="button" class="btn btn-danger" (click)="RemoveComp('RAM')">Remove</button>
+                    </div>
+            </td>
+        </tr>
+        <tr>
+            <td>SSD</td>
+            <td>{{ssd.name}}</td>
+            <td>{{ssd.price}}</td>
+            <!-- <td class="col-lg-1"><a class="btn btn-info" [routerLink]="['/home/select-component/SSD']">Choose SSD</a></td> -->
+            <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info widthbtn" routerLink="/home/select-component/SSD">Choose SSD</button>
+                        <button type="button" class="btn btn-danger" (click)="RemoveComp('SSD')">Remove</button>
+                    </div>
+            </td>
+        </tr>
+        <tr>
+            <td>HDD</td>
+            <td>{{hdd.name}}</td>
+            <td>{{hdd.price}}</td>
+            <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info widthbtn" routerLink="/home/select-component/HDD">Choose HDD</button>
+                        <button type="button" class="btn btn-danger" (click)="RemoveComp('HDD')">Remove</button>
+                    </div>
+            </td>
+            <!-- <td class="col-lg-1"><a class="btn btn-info" [routerLink]="['/home/select-component/HDD']">Choose HDD</a></td> -->
+        </tr>
+        <tr>
+            <td class="col-lg-1">Case</td>
+            <td>{{case.name}}</td>
+            <td>{{case.price}}</td>
+            <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info widthbtn" routerLink="/home/select-component/CASE">Choose Case</button>
+                        <button type="button" class="btn btn-danger" (click)="RemoveComp('CASE')">Remove</button>
+                    </div>
+            </td>
+            <!-- <td class="col-lg-1"><a class="btn btn-info" [routerLink]="['/home/select-component/CASE']">Choose Case</a></td> -->
+        </tr>
+        <tr>
+            <td>Cooler</td>
+            <td>{{cooler.name}}</td>
+            <td>{{cooler.price}}</td>
+            <!-- <td class="col-lg-1"><a class="btn btn-info" [routerLink]="['/home/select-component/COOLER']">Choose Cooler</a></td> -->
+            <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info widthbtn" routerLink="/home/select-component/COOLER">Choose Cooler</button>
+                        <button type="button" class="btn btn-danger" (click)="RemoveComp('COOLER')">Remove</button>
+                    </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Power Supply</td>
+            <td>{{smps.name}}</td>
+            <td>{{smps.price}}</td>
+            <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info widthbtn" routerLink="/home/select-component/SMPS">Choose SMPS</button>
+                        <button type="button" class="btn btn-danger" (click)="RemoveComp('SMPS')">Remove</button>
+                    </div>
+            </td>
+            <!-- <td class="col-lg-1"><a class="btn btn-info" [routerLink]="['/home/select-component/SMPS']">Choose Power Supply</a></td> -->
+        </tr>
+        <tr>
+            <td>Wifi Card</td>
+            <td>{{wificard.name}}</td>
+            <td>{{wificard.price}}</td>
+            <!-- <td class="col-lg-1"><a class="btn btn-info" [routerLink]="['/home/select-component/WIFICARD']">Choose Wifi Card</a></td> -->
+            <td>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info widthbtn" routerLink="/home/select-component/WIFICARD">Choose Wifi Card</button>
+                    <button type="button" class="btn btn-danger" (click)="RemoveComp('WIFICARD')">Remove</button>
+                </div>
+            </td>
+        </tr> 
+        </tbody>
+        <tfoot>
+            <tr style="background-color: #000000; color: aliceblue;">
+                <td><input [(ngModel)]="build.name" name="name" type="text" class="form-control" placeholder="Build Name"></td>
+                <td style="font-weight: bold">Total Price :</td>
+                <td><span>&#8377;</span>{{totalprice}}</td>
+                <td><button style="width: 246px" (click)="SaveBuild()" class="btn btn-success">Save Build</button></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

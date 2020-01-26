@@ -1,0 +1,17 @@
+.navbar{
+    margin-bottom: 0!important;
+    display: block;
+    overflow: auto;
+
+ }
+
+.footer {
+position: absolute;
+left: 0;
+bottom: 0px;
+width: 100%;
+background-color:#222222;
+color: white;
+text-align: center;
+}
+

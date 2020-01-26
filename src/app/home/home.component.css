@@ -1,0 +1,58 @@
+.parallax { 
+    /* The image used */
+    background-image: url("../../assets/images/backgroud-main.jpg");
+  
+    /* Set a specific height */
+    height:500px; 
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
+  }
+
+  .navbar{
+    margin-bottom: 0!important;
+    display: block;
+    overflow: auto;
+
+ }
+html{
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin: 0 0 100px;
+  /* bottom = footer height */
+  padding: 0px;
+}
+.footer {
+position: sticky;
+left: 0;
+height: 50px;
+margin-bottom: 0px;
+width: 100%;
+background-color:#222222;
+color: white;
+text-align: center;
+}
+.wrapper{
+  min-height: 100%;
+
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+  margin-bottom: -50px;
+}
+
+.navbar {
+  font-family: Montserrat, sans-serif;
+  margin-bottom: 0;
+  background-color: #000000;
+  border: 0;
+  font-weight: 800;
+  font-size: 11px !important;
+  letter-spacing: 4px;
+  opacity: 0.9;
+}
+
