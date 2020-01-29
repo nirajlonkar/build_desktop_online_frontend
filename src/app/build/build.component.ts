@@ -46,7 +46,10 @@ export class BuildComponent implements OnInit {
     public datepipe: DatePipe) {
    }
   ngOnInit() {
-    this.date=new Date();
+
+    if(sessionStorage['login_status'])
+    {
+      this.date=new Date();
     this.latest_date = this.datepipe.transform(this.date,'yyyy-MM-dd');
     let CPU = this.service.ComponentById(sessionStorage['CPU']);
     CPU.subscribe((result)=>{
@@ -101,6 +104,11 @@ export class BuildComponent implements OnInit {
       this.totalprice=this.totalprice+this.wificard.price;
       this.build.price=this.totalprice;
     });
+    }else{
+      alert("You are not logged in. Please login.")
+      this.router.navigate(['/home/login']);
+    }
+    
   }
   SaveBuild()
   {

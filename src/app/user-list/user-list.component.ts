@@ -14,11 +14,25 @@ export class UserListComponent implements OnInit {
     private router: Router) {}
 
   ngOnInit() {
-    console.log("inside ngoninit of component list")
-   let ObservableResult = this.service.UserList();
-   ObservableResult.subscribe((data)=>{
-     this.userlist=data;
-     console.log(data);
-  });
+    if(sessionStorage['login_status'])
+    {
+      if(localStorage['role']=='ADMIN')
+      {
+        console.log("inside ngoninit of component list")
+        let ObservableResult = this.service.UserList();
+        ObservableResult.subscribe((data)=>{
+          this.userlist=data;
+          console.log(data);
+       });
+      }
+      else{
+        alert("You are not allowed to visit this page.")
+        this.router.navigate(['/home']);
+      }
+    }else{
+      alert("You are not logged in. Please login.")
+      this.router.navigate(['/home/login']);
+    }
+    
   }
 }

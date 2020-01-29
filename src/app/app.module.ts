@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgModel, FormsModule, NgForm} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +28,7 @@ import { SelectComponentComponent } from './select-component/select-component.co
 import { DatePipe } from '@angular/common';
 import { OrderListComponent } from './order-list/order-list.component';
 import { NewOrderComponent } from './new-order/new-order.component';
+import { AuthService } from './auth.service';
 
 const parentModuleRoutes: Routes = [
   {
@@ -44,7 +47,7 @@ const parentModuleRoutes: Routes = [
     path:'home',component:HomeComponent,children:[{path:'aboutus',component:AboutusComponent}]
   },
   {
-    path:'home',component:HomeComponent,children:[{path:'change-password',component:ChangePasswordComponent}]
+    path:'home',component:HomeComponent,children:[{path:'change-password',component:ChangePasswordComponent}], canActivate:[AuthService]
   },
   {
     path:'home',component:HomeComponent,children:[{path:'contactus',component:ContactusComponent}]
@@ -62,7 +65,7 @@ const parentModuleRoutes: Routes = [
     path:'home',component:HomeComponent,children:[{path:'build',component:BuildComponent}]
   },
   {
-    path:'home',component:HomeComponent,children:[{path:'add-component',component:AddComponentComponent}]
+    path:'home',component:HomeComponent,children:[{path:'add-component',component:AddComponentComponent}],
   },
   {
     path:'delete-component/:id',component:DeleteComponentComponent
@@ -116,6 +119,8 @@ const parentModuleRoutes: Routes = [
     FormsModule,
     HttpClientModule,
     NgbModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     RouterModule.forRoot(parentModuleRoutes)
   ],
   exports:[RouterModule],

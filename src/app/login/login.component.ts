@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import * as toastr from "toastr";
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -26,7 +27,8 @@ export class LoginComponent implements OnInit {
   
   constructor(
     private userService: UserService,
-    private router: Router) { }
+    private router: Router,
+    private toaster: ToastrService) { }
 
 
   ngOnInit() {
@@ -34,6 +36,11 @@ export class LoginComponent implements OnInit {
 
   onSignup() {
     this.router.navigate(['/home/register']);
+  }
+  onCancel()
+  {
+    this.router.navigate(['/home']);
+    this.toaster.info("Redirecting to Home")
   }
   
   SignIn()
@@ -52,7 +59,8 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('user',JSON.stringify(this.user));
         localStorage.setItem('flag','true');
         this.router.navigate(['/home']);
-        toastr.success('Title',"asd");
+        this.toaster.success("Admin Logged in");
+
         
       } 
       else if(this.user.type == "CUSTOMER")
@@ -63,76 +71,16 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('user',JSON.stringify(this.user));
         localStorage.setItem('flag','true');
         this.router.navigate(['/home']); 
+        this.toaster.success("Login Successful!");
       }
       else
       {
         console.log("in msg");
-        toastr.error("Error");
+        this.toaster.error("Invalid Email/Password","Login failed")
+        alert("Wrong email or Password");
         this.message = "Email Id / password is wrong!";
       }
   });
 
 }}
-//   SignIn() {
-  
-//     if (this.user.email.length == 0) {
-//       alert('enter email');
-//     } else if (this.user.password.length ==0) {
-//       alert('enter password');
-//     } else {
 
-//       //this.user = this.service.CheckCredentialsWithDB(this.email,this.password);
-
-//       this.userService.CheckCredentialsWithDB(this.users).subscribe((result)=>{
-//         console.log(result);
-//         this.users = result;
-
-//         console.log(this.users);
-
-//       if(this.user.type=='ADMIN')
-//       {
-//           sessionStorage['login_status'] = '1';
-//           localStorage.setItem('role',this.user.type);
-//           sessionStorage.setItem('user',JSON.stringify(this.user));
-//           localStorage.setItem('flag','true');
-//           this.router.navigate(['/home']);
-//           console.log("Admin logged in");
-//       }
-//       else if(this.user.type=='OWNER')
-//       {
-        
-//           sessionStorage['login_status'] = '1';
-//           localStorage.setItem('role',this.user.type);
-//           sessionStorage.setItem('user',JSON.stringify(this.user));
-//           localStorage.setItem('flag','true');
-//           this.emtService.navBarSwitch(true);
-//           this.router.navigate(['/home']);
-//       }
-//       else if(this.user.type=='USER')
-//       {
-//           sessionStorage['login_status'] = '1';
-//           localStorage.setItem('role',this.user.type);
-//           sessionStorage.setItem('user',JSON.stringify(this.user));
-//           localStorage.setItem('flag','true');
-//           this.emtService.navBarSwitch(true);
-//           this.router.navigate(['/home']);
-//       }else{
-//         alert("invalid login");
-//         this.router.navigate(['']);
-//       }
-
-
-//       },(error)=>{
-//         console.log(error)
-//       }
-//       )
-
-      
-      
-//     }
-// }
-// }
-//     onSignup() {
-//     this.router.navigate(['/register']);
-//   }
-// }

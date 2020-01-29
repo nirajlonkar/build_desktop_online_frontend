@@ -15,15 +15,21 @@ export class SelectComponentComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe((result)=>{
-      let type = result.get('type');
-      let ObservableResult = this.service.ComponentByType(type);
-      ObservableResult.subscribe((data)=>{
-        console.log(data);
-        this.component=(data);
-
+    if(sessionStorage['login_status'])
+    {
+      this.route.paramMap.subscribe((result)=>{
+        let type = result.get('type');
+        let ObservableResult = this.service.ComponentByType(type);
+        ObservableResult.subscribe((data)=>{
+          console.log(data);
+          this.component=(data);
+  
+        })
       })
-    })
+    }else{
+      alert("You are not logged in. Please login.")
+      this.router.navigate(['/home/login']);
+    }
   }
 
   AddToBuild(type,id)

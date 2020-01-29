@@ -49,77 +49,83 @@ export class NewOrderComponent implements OnInit {
      }
 
   ngOnInit() {
-    this.route.paramMap.subscribe((result)=>{
-      this.id = result.get("id");
-      this.order.build_id=this.id;
-    })
-    let ObservableResult = this.service.BuildID(this.id);
-    ObservableResult.subscribe((result)=>{
-      this.build=result;
-      console.log(this.build)
-      
-      let CPU = this.service.ComponentById(this.build.cpu_id);
-      CPU.subscribe((result)=>{
-        this.cpu=result;
-        this.totalprice=this.totalprice+this.cpu.price;
-        console.log(this.cpu)
+    if(sessionStorage['login_status'])
+    {
+      this.route.paramMap.subscribe((result)=>{
+        this.id = result.get("id");
+        this.order.build_id=this.id;
       })
-      let GPU = this.service.ComponentById(this.build.gpu_id);
-      GPU.subscribe((result)=>{
-        this.gpu=result;
-        this.totalprice=this.totalprice+this.gpu.price;
-        console.log(this.gpu)
+      let ObservableResult = this.service.BuildID(this.id);
+      ObservableResult.subscribe((result)=>{
+        this.build=result;
+        console.log(this.build)
+        
+        let CPU = this.service.ComponentById(this.build.cpu_id);
+        CPU.subscribe((result)=>{
+          this.cpu=result;
+          this.totalprice=this.totalprice+this.cpu.price;
+          console.log(this.cpu)
+        })
+        let GPU = this.service.ComponentById(this.build.gpu_id);
+        GPU.subscribe((result)=>{
+          this.gpu=result;
+          this.totalprice=this.totalprice+this.gpu.price;
+          console.log(this.gpu)
+        })
+        let SSD = this.service.ComponentById(this.build.ssd_id);
+        SSD.subscribe((result)=>{
+          this.ssd=result;
+          this.totalprice=this.totalprice+this.ssd.price;
+          console.log(this.ssd)
+        })
+        let HDD = this.service.ComponentById(this.build.hdd_id);
+        HDD.subscribe((result)=>{
+          this.hdd=result;
+          this.totalprice=this.totalprice+this.hdd.price;
+          console.log(this.hdd)
+        })
+        let SMPS = this.service.ComponentById(this.build.smps_id);
+        SMPS.subscribe((result)=>{
+          this.smps=result;
+          this.totalprice=this.totalprice+this.smps.price;
+          console.log(this.smps)
+        })
+        let MB = this.service.ComponentById(this.build.mb_id);
+        MB.subscribe((result)=>{
+          this.mb=result;
+          this.totalprice=this.totalprice+this.mb.price;
+          console.log(this.mb)
+        })
+        let RAM = this.service.ComponentById(this.build.ram_id);
+        RAM.subscribe((result)=>{
+          this.ram=result;
+          this.totalprice=this.totalprice+this.ram.price;
+          console.log(this.ram)
+        })
+        let COOLER = this.service.ComponentById(this.build.cooler_id);
+        COOLER.subscribe((result)=>{
+          this.cooler=result;
+          this.totalprice=this.totalprice+this.cooler.price;
+          console.log(this.cooler)
+        })
+        let WIFICARD = this.service.ComponentById(this.build.wificard_id);
+        WIFICARD.subscribe((result)=>{
+          this.wificard=result;
+          this.totalprice=this.totalprice+this.wificard.price;
+          console.log(this.wificard)
+        })
+        let CASE = this.service.ComponentById(this.build.case_id);
+        CASE.subscribe((result)=>{
+          this.case=result;
+          this.totalprice=this.totalprice+this.case.price;
+          this.order.oprice=this.totalprice;
+          console.log(this.case)
+        })
       })
-      let SSD = this.service.ComponentById(this.build.ssd_id);
-      SSD.subscribe((result)=>{
-        this.ssd=result;
-        this.totalprice=this.totalprice+this.ssd.price;
-        console.log(this.ssd)
-      })
-      let HDD = this.service.ComponentById(this.build.hdd_id);
-      HDD.subscribe((result)=>{
-        this.hdd=result;
-        this.totalprice=this.totalprice+this.hdd.price;
-        console.log(this.hdd)
-      })
-      let SMPS = this.service.ComponentById(this.build.smps_id);
-      SMPS.subscribe((result)=>{
-        this.smps=result;
-        this.totalprice=this.totalprice+this.smps.price;
-        console.log(this.smps)
-      })
-      let MB = this.service.ComponentById(this.build.mb_id);
-      MB.subscribe((result)=>{
-        this.mb=result;
-        this.totalprice=this.totalprice+this.mb.price;
-        console.log(this.mb)
-      })
-      let RAM = this.service.ComponentById(this.build.ram_id);
-      RAM.subscribe((result)=>{
-        this.ram=result;
-        this.totalprice=this.totalprice+this.ram.price;
-        console.log(this.ram)
-      })
-      let COOLER = this.service.ComponentById(this.build.cooler_id);
-      COOLER.subscribe((result)=>{
-        this.cooler=result;
-        this.totalprice=this.totalprice+this.cooler.price;
-        console.log(this.cooler)
-      })
-      let WIFICARD = this.service.ComponentById(this.build.wificard_id);
-      WIFICARD.subscribe((result)=>{
-        this.wificard=result;
-        this.totalprice=this.totalprice+this.wificard.price;
-        console.log(this.wificard)
-      })
-      let CASE = this.service.ComponentById(this.build.case_id);
-      CASE.subscribe((result)=>{
-        this.case=result;
-        this.totalprice=this.totalprice+this.case.price;
-        this.order.oprice=this.totalprice;
-        console.log(this.case)
-      })
-    })
+    }else{
+      alert("You are not logged in. Please login.")
+      this.router.navigate(['/home/login']);
+    }
   }
 
   PlaceOrder()
@@ -129,6 +135,7 @@ export class NewOrderComponent implements OnInit {
     ObservableResult.subscribe((result)=>{
       this.orders=result;
     })
+    this.router.navigate(['/home/order-list']);
   }
 
 }

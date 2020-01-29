@@ -37,7 +37,7 @@
                 <span>
                     <div class="btn-group btn-group-xs" role="group" aria-label="...">
                         <a class="btn btn-danger" (click)="DeleteBuild(build.id)">Delete</a>
-                        <a class="btn btn-info" (click)="PlaceOrder(build.id)">Order</a>
+                        <a *ngIf="role=='CUSTOMER'" class="btn btn-info" (click)="PlaceOrder(build.id)">Order</a>
                         <!-- <button type="button" class="btn btn-default">Edit</button>
                         <button type="button" class="btn btn-default" disabled>Delete</button> -->
                     </div>
@@ -46,5 +46,8 @@
         </ul>
     </div>
 </div>
-<h4 style="text-align: center">Please refresh page if New Build is not showing in List.</h4>
+<div class="container">
+    <h4 style="text-align: center">Please refresh page if New Build is not showing in List.</h4>
+</div>
+
     

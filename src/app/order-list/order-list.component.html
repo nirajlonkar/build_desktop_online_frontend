@@ -43,7 +43,7 @@
                 <span>Delivery Date</span>
                 <span>Order Status</span>
                 <span>Payment Mode</span>
-                <span *ngIf="!userService.CheckUserOrNot()">Action</span>
+                <span *ngIf="userService.CheckUserOrNot()">Action</span>
             </li>
             <li *ngFor="let o of orders">
                 <span>{{o.id}}</span>
@@ -55,14 +55,14 @@
                 <span>{{o.delivery_date}}</span>
                 <span>{{o.status}}</span>
                 <span>{{o.paymentMode}}</span>
-                <div *ngIf="!userService.CheckUserOrNot() && o.status=='PENDING'">
+                <div *ngIf="userService.CheckUserOrNot() && o.status=='PENDING'">
                     <span>
                         <div class="btn-group btn-group-xs" role="group" aria-label="...">
                             <a class="btn btn-info" (click)="Delivered(o.id)">Delivered</a>
                         </div>
                     </span>
                 </div>
-                <div *ngIf="!userService.CheckUserOrNot() && o.status=='DELIVERED'">
+                <div *ngIf="userService.CheckUserOrNot() && o.status=='DELIVERED'">
                     <span>
                         <div class="btn-group btn-group-xs" role="group" aria-label="...">
                             <a class="btn btn-danger" style="width: 64px" disabled="disabled">Closed</a>

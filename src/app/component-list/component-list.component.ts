@@ -20,14 +20,27 @@ export class ComponentListComponent implements OnInit {
     component:any;
   ngOnInit()
   {
-   this.userdetails=JSON.parse(sessionStorage['user']);
-   let id = this.userdetails.id;
-    console.log("inside ngoninit of component list")
-   let ObservableResult = this.servie.ComponentList();
-   ObservableResult.subscribe((data)=>{
-     this.component=data;
-     console.log(data);
-   })
+    if(sessionStorage['login_status'])
+    {
+      if(localStorage['role']=='ADMIN')
+      {
+        this.userdetails=JSON.parse(sessionStorage['user']);
+        let id = this.userdetails.id;
+         console.log("inside ngoninit of component list")
+        let ObservableResult = this.servie.ComponentList();
+        ObservableResult.subscribe((data)=>{
+          this.component=data;
+          console.log(data);
+        })     
+      }
+      else{
+        alert("You are not allowed to visit this page.")
+        this.router.navigate(['/home']);
+      }
+    }else{
+      alert("You are not logged in. Please login.")
+      this.router.navigate(['/home/login']);
+    }
   }
 
   AddNew()

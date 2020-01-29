@@ -10,26 +10,33 @@ import { Router } from '@angular/router';
 export class BuildListComponent implements OnInit {
 
   buildlist :any;
+  role:any;
   constructor(private service: DataService,
     private router: Router) {}
 
   ngOnInit() {
-
-    if(localStorage.getItem('role')=="ADMIN"){
-      console.log("inside ngoninit of component list for admin")
-   let ObservableResult = this.service.BuildList();
-   ObservableResult.subscribe((data)=>{
-     this.buildlist=data;
-     console.log(this.buildlist);
-    })
+    if(sessionStorage['login_status'])
+    {
+      if(localStorage.getItem('role')=="ADMIN"){
+        console.log("inside ngoninit of component list for admin")
+     let ObservableResult = this.service.BuildList();
+     ObservableResult.subscribe((data)=>{
+       this.buildlist=data;
+       this.role=localStorage.getItem('role');
+       console.log(this.buildlist);
+      })
+      }else{
+        console.log("inside ngoninit of component list for customer")
+        console.log(sessionStorage.getItem('login_status'));
+     let ObservableResult = this.service.BuildById(sessionStorage.getItem('login_status'));
+     ObservableResult.subscribe((data)=>{
+       this.buildlist=data;
+       console.log(this.buildlist);
+      })
+      }
     }else{
-      console.log("inside ngoninit of component list for customer")
-      console.log(sessionStorage.getItem('login_status'));
-   let ObservableResult = this.service.BuildById(sessionStorage.getItem('login_status'));
-   ObservableResult.subscribe((data)=>{
-     this.buildlist=data;
-     console.log(this.buildlist);
-    })
+      alert("You are not logged in. Please login.")
+      this.router.navigate(['/home/login']);
     }
   }
   DeleteBuild(id)

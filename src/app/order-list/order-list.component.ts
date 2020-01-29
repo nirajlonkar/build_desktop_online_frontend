@@ -29,7 +29,9 @@ export class OrderListComponent implements OnInit
 
   ngOnInit() 
   {
-    if(localStorage.getItem('role')=="ADMIN")
+    if(sessionStorage['login_status'])
+    {
+      if(localStorage.getItem('role')=="ADMIN")
     {
       let ObservableResult = this.service.AllOrderDetails();
       ObservableResult.subscribe((result)=>{
@@ -43,6 +45,10 @@ export class OrderListComponent implements OnInit
       ObservableResult.subscribe((result)=>{
       this.orders=result;
       })
+    }
+    }else{
+      alert("You are not logged in. Please login.")
+      this.router.navigate(['/home/login']);
     }
   }
 

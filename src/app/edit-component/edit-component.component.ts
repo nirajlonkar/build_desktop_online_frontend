@@ -26,7 +26,11 @@ export class EditComponentComponent implements OnInit {
 
   ngOnInit()
   {
-    console.log("inside ng init of edit component")
+    if(sessionStorage['login_status'])
+    {
+      if(localStorage['role']=='ADMIN')
+      {
+        console.log("inside ng init of edit component")
     this.route.paramMap.subscribe((result)=>
     {
       // console.log(result.get("id"))
@@ -37,7 +41,17 @@ export class EditComponentComponent implements OnInit {
         this.component=data;
         console.log(data);
       });
-    });
+    });     
+      }
+      else{
+        alert("You are not allowed to visit this page.")
+        this.router.navigate(['/home']);
+      }
+    }else{
+      alert("You are not logged in. Please login.")
+      this.router.navigate(['/home/login']);
+    }
+    
   }
   EditComp()
   {

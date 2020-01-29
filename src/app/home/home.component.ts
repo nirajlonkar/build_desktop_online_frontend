@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
 
 
   onLogout() {
-    if (sessionStorage['login_status'] == '1') {
+    if (sessionStorage['login_status']) {
       const result = confirm('Are you sure you want to logout?');
       if (result) {
         sessionStorage['login_status'] = '0';

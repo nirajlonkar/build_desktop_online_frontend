@@ -89,7 +89,7 @@
 
 .list li:nth-child(1):hover {
     
-
+    background-color: #332f3f;
     
 }
 
@@ -110,12 +110,5 @@
     vertical-align: middle;
     
 }
-
-
-.list span:nth-child(2) {
-    
-    
-}
-
 
 

@@ -15,15 +15,28 @@ export class DeleteComponentComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe((result)=>{
-      let id = result.get("id");
-
-      let ObservableResult = this.service.DeleteComponent(id);
-      ObservableResult.subscribe((data)=>{
-        console.log(data);
-        this.router.navigate(['/home/component-list']);
-      })
-    })
+    if(sessionStorage['login_status'])
+    {
+      if(localStorage['role']=='ADMIN')
+      {
+        this.route.paramMap.subscribe((result)=>{
+          let id = result.get("id");
+    
+          let ObservableResult = this.service.DeleteComponent(id);
+          ObservableResult.subscribe((data)=>{
+            console.log(data);
+            this.router.navigate(['/home/component-list']);
+          })
+        }) 
+      }
+      else{
+        alert("You are not allowed to visit this page.")
+        this.router.navigate(['/home']);
+      }
+    }else{
+      alert("You are not logged in. Please login.")
+      this.router.navigate(['/home/login']);
+    }    
   }
 
 }

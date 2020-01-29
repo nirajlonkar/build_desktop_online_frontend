@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
   flag :boolean=false;
-  url = 'http://localhost:3000/user';
+
 
   constructor(private router: Router, private http: HttpClient) 
     {
@@ -43,7 +43,7 @@ export class UserService {
 
      IsLoggedIn()
     {
-    if(window.sessionStorage.getItem("login_status")!=null && window.sessionStorage.getItem("login_status")=="1")
+    if(window.sessionStorage.getItem("login_status")!=null)
     {
       return true;
     }
@@ -54,6 +54,14 @@ export class UserService {
   CheckUserOrNot()
     {
       if(window.sessionStorage.getItem("role")=="CUSTOMER")
+        return true;
+      else
+        return false;
+    }
+
+    CheckAdmin()
+    {
+      if(window.localStorage.getItem("role")=="ADMIN")
         return true;
       else
         return false;
