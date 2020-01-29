@@ -24,16 +24,31 @@ message="";
     private userService: UserService) { }
 
   ngOnInit() {
+    if(sessionStorage['login_status'])
+    {
+      if(localStorage['role']=='ADMIN')
+      {
+            
+      }
+      else{
+        alert("You are not allowed to visit this page.")
+        this.router.navigate(['/home']);
+      }
+    }else{
+      alert("You are not logged in. Please login.")
+      this.router.navigate(['/home/login']);
+    }
   }
 
   AddComp()
   {
     let ObservableResult = this.userService.NewComponent(this.component);
-    ObservableResult.subscribe((result)=>{
-      console.log(result);
-      this.message="Component added succesfully!";
-      this.router.navigate(['/home/component-list']);
-    })
+        ObservableResult.subscribe((result)=>{
+          console.log(result);
+          this.message="Component added succesfully!";
+          this.router.navigate(['/home/component-list']);
+        })
+    
   }
 
 }

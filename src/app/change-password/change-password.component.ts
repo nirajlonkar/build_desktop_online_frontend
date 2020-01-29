@@ -25,23 +25,25 @@ export class ChangePasswordComponent implements OnInit {
     "contact": "",
     "password": "",
     "type": null,
-    "builds": 1
+    "builds": ""
   }
   ngOnInit() {
     this.user=sessionStorage.getItem('user');
-    this.cpd.id=this.user.id;
-    console.log(this.user.id)
-    this.cpd.name=this.user.name;
-    this.cpd.email=this.user.email;
-    this.cpd.contact=this.user.contact;
-    this.cpd.type=this.user.type;
-    this.cpd.builds=this.user.builds;
+    this.cpd.id=sessionStorage.getItem('login_status');
+    console.log(this.cpd.id);
   }
   ChangePassword()
   {
     this.userdetails.email=sessionStorage.getItem('email');
-    if(this.service.CheckCredentialsWithDB(this.userdetails)!=null)
+    let ObservableResult = this.service.CheckCredentialsWithDB(this.userdetails);
+    ObservableResult.subscribe((result)=>{
+      console.log(result);
+      this.user =result;
+      console.log(this.user);
+    });
+    if(this.user.id!=sessionStorage.getItem('login_status'))
     {
+      console.log(this.user);
       let ObservableResult = this.service.ChangePass(this.cpd);
       ObservableResult.subscribe((result)=>{
         this.router.navigate(['/home']);

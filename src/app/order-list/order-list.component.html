@@ -1,0 +1,76 @@
+<!-- <div class="table-striped">
+<h1 style="text-align: center">Order Details</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Order Id</th>
+            <th scope="col" *ngIf="!userService.CheckUserOrNot()">User Id</th>
+            <th scope="col">Build Id</th>
+            <th scope="col">Total Price</th>
+            <th scope="col">Units</th>
+            <th scope="col">Order Date</th>
+            <th scope="col">Delivery Date</th>
+            <th scope="col">Order Status</th>
+            <th scope="col">Payment Mode</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let o of orders">
+            <td>{{o.id}}</td>
+            <td>{{o.user.id}}</td>
+            <td>{{o.build_id}}</td>
+            <td>{{o.oprice}}</td>
+            <td>{{o.qty}}</td>
+            <td>{{o.placed_date}}</td>
+            <td>{{o.delivery_date}}</td>
+            <td>{{o.status}}</td>
+            <td>{{o.paymentMode}}</td>
+            <td *ngIf="!userService.CheckUserOrNot() && o.status=='PENDING'"><a class="btn btn-success" (click)="Delivered(o.id)">Delivered</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div> -->
+<div class="container">
+    <div class="listWrap">
+        <ul class="list">
+            <li>
+                <span>Order Id</span>
+                <span *ngIf="!userService.CheckUserOrNot()">User Id</span>
+                <span>Build Id</span>
+                <span>Total Price</span>                
+                <span>Units</span>
+                <span>Order Date</span>
+                <span>Delivery Date</span>
+                <span>Order Status</span>
+                <span>Payment Mode</span>
+                <span *ngIf="!userService.CheckUserOrNot()">Action</span>
+            </li>
+            <li *ngFor="let o of orders">
+                <span>{{o.id}}</span>
+                <span>{{o.user.id}}</span>
+                <span>{{o.build_id}}</span>
+                <span>{{o.oprice}}</span>
+                <span>{{o.qty}}</span>
+                <span>{{o.placed_date}}</span>
+                <span>{{o.delivery_date}}</span>
+                <span>{{o.status}}</span>
+                <span>{{o.paymentMode}}</span>
+                <div *ngIf="!userService.CheckUserOrNot() && o.status=='PENDING'">
+                    <span>
+                        <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                            <a class="btn btn-info" (click)="Delivered(o.id)">Delivered</a>
+                        </div>
+                    </span>
+                </div>
+                <div *ngIf="!userService.CheckUserOrNot() && o.status=='DELIVERED'">
+                    <span>
+                        <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                            <a class="btn btn-danger" style="width: 64px" disabled="disabled">Closed</a>
+                        </div>
+                    </span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+            

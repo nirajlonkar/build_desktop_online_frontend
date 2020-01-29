@@ -39,12 +39,43 @@ export class DataService {
   
   BuildList()
   {
-    console.log("user list");
+    console.log("admin build list");
     return this.http.get("http://localhost:8080/FinalProject/build/list")
+  }
+  BuildById(id)
+  {
+    console.log("user build list");
+    return this.http.get("http://localhost:8080/FinalProject/build/list/"+id);
   }
   AddBuild(build,id)
   {
     return this.http.post("http://localhost:8080/FinalProject/build/new/"+id,build)
   }
+  OrderDetails(userid)
+  {
+    return this.http.get("http://localhost:8080/FinalProject/user/order/list/"+userid)
+  }
+  AllOrderDetails()
+  {
+    return this.http.get("http://localhost:8080/FinalProject/user/order/list")
+  }
+  DeleteBuild(id,uid)
+  {
+    return this.http.delete("http://localhost:8080/FinalProject/build/"+id+"/"+uid)
+  }
+  DeliverSystem(id,order)
+  {
+    return this.http.put("http://localhost:8080/FinalProject/admin/order/"+id,order)
+  }
+  BuildID(id)
+  {
+    return this.http.get("http://localhost:8080/FinalProject/build/"+id);
+  }
+  PlaceOrder(ids,orders)
+  {
+    console.log("in place order")
+    return this.http.post("http://localhost:8080/FinalProject/user/order/"+ids,orders);
+  }
+
   
 }

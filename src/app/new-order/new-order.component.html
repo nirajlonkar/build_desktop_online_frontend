@@ -1,0 +1,110 @@
+<div class="container">
+
+        <div class="listWrap">
+        
+            <ul class="list">
+            
+                <li>
+                    <span>Image</span>
+                    <span>Part</span>
+                    <span>Name</span>
+                    <span>Model No</span>
+                    <span>Price</span>
+                </li>
+                <li>
+                    <span></span>
+                    <span>Processor</span>
+                    <span>{{cpu.name}}</span>
+                    <span>{{cpu.model_no}}</span>
+                    <span>&#8377;   {{cpu.price}}</span>
+                </li>
+                <li>
+                    <span></span>
+                    <span>Motherboard</span>
+                    <span>{{mb.name}}</span>
+                    <span>{{mb.model_no}}</span>
+                    <span>&#8377;   {{mb.price}}</span>
+                </li>
+                <li>
+                    <span></span>
+                    <span>Graphics</span>
+                    <span>{{gpu.name}}</span>
+                    <span>{{gpu.model_no}}</span>
+                    <span>&#8377;   {{gpu.price}}</span>
+                </li>
+                <li>
+                    <span></span>
+                    <span>Memory</span>
+                    <span>{{ram.name}}</span>
+                    <span>{{ram.model_no}}</span>
+                    <span>&#8377;   {{ram.price}}</span>
+                </li>
+                <li>
+                    <span></span>
+                    <span>Cooler</span>
+                    <span>{{cooler.name}}</span>
+                    <span>{{cooler.model_no}}</span>
+                    <span>&#8377;   {{cooler.price}}</span>
+                </li>
+                <li>
+                    <span></span>
+                    <span>SSD</span>
+                    <span>{{ssd.name}}</span>
+                    <span>{{ssd.model_no}}</span>
+                    <span>&#8377;   {{ssd.price}}</span>
+                </li>
+                <li>
+                    <span></span>
+                    <span>HDD</span>
+                    <span>{{hdd.name}}</span>
+                    <span>{{hdd.model_no}}</span>
+                    <span>&#8377;   {{hdd.price}}</span>
+                </li>
+                <li>
+                    <span></span>
+                    <span>Case</span>
+                    <span>{{case.name}}</span>
+                    <span>{{case.model_no}}</span>
+                    <span>&#8377;   {{case.price}}</span>
+                </li>
+                <li>
+                    <span></span>
+                    <span>Power Supply</span>
+                    <span>{{smps.name}}</span>
+                    <span>{{smps.model_no}}</span>
+                    <span>&#8377;   {{smps.price}}</span>
+                </li>
+                <li>
+                    <span></span>
+                    <span>Wifi Card</span>
+                    <span>{{wificard.name}}</span>
+                    <span>{{wificard.model_no}}</span>
+                    <span>&#8377;   {{wificard.price}}</span>
+                </li>
+                <li style="height: 50px">
+                    <span style="font-weight: bold; font-size: 20px;">{{build.name}}</span>
+                    <span></span>
+                    <span></span>
+                    <span style="font-weight: bold; font-size: 20px">Total Price</span>
+                    <span>&#8377;   {{totalprice}}</span>
+                </li>
+            </ul>
+        </div>
+    
+    </div>
+    <div class="container">
+        <span style="padding: 50px; font-size: 20px">No. of Units</span>
+        <!-- <input ([ngModel])="qty" name="qty" type="number" min="1" max="25" placeholder="Qty"> -->
+        <input [(ngModel)]="order.qty" type="number" name="qty" max="25">
+        <span style="padding: 100px; font-size: 20px">Payment Mode</span>
+        <select [(ngModel)]="order.paymentMode" name="paymentMode" class=" dropdown-info">
+                <option selected>Payment Mode</option>
+                <option value="Net Banking">Net Banking</option>
+                <option value="UPI">UPI</option>
+                <option value="Debit Card">Debit Card</option>
+                <option value="Credit Card">Credit Card</option>
+        </select>
+        <button class="btn btn-success pull-right" style="width: 400px" (click)="PlaceOrder()">Place Order</button>
+        <br>
+        <span style="padding: 50px; font-size: 10px; color: red">*Maximum Units are 25 to order more than that contact us.</span>
+    </div>

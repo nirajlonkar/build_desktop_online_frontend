@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgModel, FormsModule, NgForm} from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +15,6 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './user.service';
 import { ChangePasswordComponent } from './change-password/change-password.component';
-import { EditComponent } from './edit/edit.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { BuildListComponent } from './build-list/build-list.component';
@@ -24,8 +24,13 @@ import { DeleteComponentComponent } from './delete-component/delete-component.co
 import { EditComponentComponent } from './edit-component/edit-component.component';
 import { SelectComponentComponent } from './select-component/select-component.component';
 import { DatePipe } from '@angular/common';
+import { OrderListComponent } from './order-list/order-list.component';
+import { NewOrderComponent } from './new-order/new-order.component';
 
 const parentModuleRoutes: Routes = [
+  {
+    path:'',component:HomeComponent,children:[{path:'',component:DefaultComponent}]
+  },
   {
     path:'home',component:HomeComponent,children:[{path:'',component:DefaultComponent}]
   },
@@ -40,9 +45,6 @@ const parentModuleRoutes: Routes = [
   },
   {
     path:'home',component:HomeComponent,children:[{path:'change-password',component:ChangePasswordComponent}]
-  },
-  {
-    path:'home',component:HomeComponent,children:[{path:'edit',component:EditComponent}]
   },
   {
     path:'home',component:HomeComponent,children:[{path:'contactus',component:ContactusComponent}]
@@ -74,6 +76,16 @@ const parentModuleRoutes: Routes = [
   {
     path:'home',component:HomeComponent,children:[{path:'select-component/:type',component:SelectComponentComponent}]
   },
+  {
+    path:'home',component:HomeComponent,children:[{path:'order-list/:userid',component:OrderListComponent}]
+  },
+  {
+    path:'home',component:HomeComponent,children:[{path:'order-list',component:OrderListComponent}]
+  },
+  {
+    path:'home',component:HomeComponent,children:[{path:'new-order/:id',component:NewOrderComponent}]
+  },
+  
 ];
 
 @NgModule({
@@ -88,7 +100,6 @@ const parentModuleRoutes: Routes = [
     RegisterComponent,
     HomeComponent,
     ChangePasswordComponent,
-    EditComponent,
     ContactusComponent,
     UserListComponent,
     BuildListComponent,
@@ -96,12 +107,15 @@ const parentModuleRoutes: Routes = [
     DefaultComponent,
     DeleteComponentComponent,
     EditComponentComponent,
-    SelectComponentComponent
+    SelectComponentComponent,
+    OrderListComponent,
+    NewOrderComponent,
   ],  
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    NgbModule,
     RouterModule.forRoot(parentModuleRoutes)
   ],
   exports:[RouterModule],

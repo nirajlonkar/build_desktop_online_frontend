@@ -9,12 +9,12 @@ export class UserService {
   flag :boolean=false;
   url = 'http://localhost:3000/user';
 
-  constructor(
-    private router: Router,
-    private http: HttpClient) {
+  constructor(private router: Router, private http: HttpClient) 
+    {
       console.log("aaaaaaaaaaaa")
+        
       //this.flag=true;
-     }
+    }
 
      CheckCredentialsWithDB(userdetails)
      {
@@ -51,7 +51,13 @@ export class UserService {
       return false;
     }
   }
-
+  CheckUserOrNot()
+    {
+      if(window.sessionStorage.getItem("role")=="CUSTOMER")
+        return true;
+      else
+        return false;
+    }
   signup()
   {
 

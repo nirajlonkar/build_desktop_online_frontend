@@ -1,40 +1,50 @@
-<div class="table-striped">
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Build Name</th>
-                <th scope="col">Created By</th>
-                <th scope="col">CPU</th>
-                <th scope="col">Motherboard</th>
-                <th scope="col">RAM</th>
-                <th scope="col">GPU</th>
-                <th scope="col">SMPS</th>
-                <th scope="col">Case</th>
-                <th scope="col">Cooler</th> 
-                <th scope="col">SSD</th>
-                <th scope="col">HDD</th>
-                <th scope="col">WifiCard</th>
-                <th scope="col">Creation Date</th>
-                <th scope="col">Total Price</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let build of buildlist">
-                <td>{{build.name}}</td>
-                <td>{{build.user.name}}</td>
-                <td>{{build.cpu_id}}</td>
-                <td>{{build.mb_id}}</td>
-                <td>{{build.ram_id}}</td>
-                <td>{{build.gpu_id}}</td>
-                <td>{{build.smps_id}}</td>
-                <td>{{build.case_id}}</td>
-                <td>{{build.cooler_id}}</td>
-                <td>{{build.ssd_id}}</td>
-                <td>{{build.hdd_id}}</td>
-                <td>{{build.wificard_id}}</td>
-                <td>{{build.date_creted}}</td>
-                <td>{{build.price}}</td>
-            </tr>
-            </tbody>
-        </table>
+<div class="container">
+    <div class="listWrap">
+        <ul class="list">
+            <li>
+                <span>Build Id</span>
+                <span>Created By</span>
+                <span>Processor</span>
+                <span>Motherboard</span>                
+                <span>Memory</span>
+                <span>Graphics</span>
+                <span>Power Supply</span>
+                <span>Case</span>
+                <span>Cooler</span>
+                <span>SSD</span>
+                <span>HDD</span>
+                <span>Wifi Card</span>
+                <span>Build Date</span>
+                <span>Price</span>
+                <span>Action</span>
+            </li>
+            <li *ngFor="let build of buildlist">
+                <span>{{build.name}}</span>
+                <span *ngIf="build.user.type=='ADMIN'"><span class="label label-info">{{build.user.name}}</span></span>
+                <span *ngIf="build.user.type=='CUSTOMER'"><span class="label label-primary">{{build.user.name}}</span></span>
+                <span>{{build.cpu_id}}</span>
+                <span>{{build.mb_id}}</span>
+                <span>{{build.ram_id}}</span>
+                <span>{{build.gpu_id}}</span>
+                <span>{{build.smps_id}}</span>
+                <span>{{build.case_id}}</span>
+                <span>{{build.cooler_id}}</span>
+                <span>{{build.ssd_id}}</span>
+                <span>{{build.hdd_id}}</span>
+                <span>{{build.wificard_id}}</span>
+                <span>{{build.date_creted}}</span> 
+                <span>{{build.price}}</span>
+                <span>
+                    <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                        <a class="btn btn-danger" (click)="DeleteBuild(build.id)">Delete</a>
+                        <a class="btn btn-info" (click)="PlaceOrder(build.id)">Order</a>
+                        <!-- <button type="button" class="btn btn-default">Edit</button>
+                        <button type="button" class="btn btn-default" disabled>Delete</button> -->
+                    </div>
+                </span>
+            </li>
+        </ul>
     </div>
+</div>
+<h4 style="text-align: center">Please refresh page if New Build is not showing in List.</h4>
+    

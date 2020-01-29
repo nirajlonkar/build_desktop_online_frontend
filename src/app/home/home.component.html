@@ -1,19 +1,7 @@
 <html>
-  <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script>
-      $('table tfoot td').each(function(index) {
-    var total = 0;
-    $('tbody tr').each(function() {
-        total += +$('td', this).eq(index).text(); //+ will convert string to number
-    });
-    $(this).text(total);
-    })  
-    </script>
-  </head>
 <body>
 <div>
-<nav class="navbar navbar-inverse" style="border-radius: 0px;" >
+  <nav class="navbar navbar-inverse" style="border-radius: 0px;" >
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -26,17 +14,17 @@
       <div class="collapse navbar-collapse" id="myNavbar" [ngSwitch]="role">
         <ul class="nav navbar-nav" *ngSwitchCase="'ADMIN'">
             <li><a routerLink="/home/change-password">Change Password</a></li>
-            <li><a routerLink="/home/edit">Edit Profile</a></li>
             <li><a routerLink="/home/component-list">Component List</a></li>
             <li><a routerLink="/home/user-list">User List</a></li>
             <li><a routerLink="/home/build-list">Build List</a></li>
             <li><a routerLink="/home/build">New Rig</a></li>
+            <li><a routerLink="/home/order-list">Orders</a></li>
         </ul>
         <ul class="nav navbar-nav" *ngSwitchCase="'CUSTOMER'">
             <li><a routerLink="/home/change-password">Change Password</a></li>
-            <li><a routerLink="/home/edit">Edit Profile</a></li>
             <li><a routerLink="/home/component-list">Components</a></li>
             <li><a routerLink="/home/build">New Rig!</a></li>
+            <li><a routerLink="/home/order-list">Orders</a></li>
         </ul>   
         <ul class="nav navbar-nav">
             <!-- <li><a routerLink="home">Home</a></li> -->
@@ -48,18 +36,56 @@
           <li *ngIf="!userService.IsLoggedIn()"><a href="/home/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           <li *ngIf="userService.IsLoggedIn()"><a (click)="onLogout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right" *ngSwitchCase="'User'">
-            <li><a routerLink="/home/cart"><span class="glyphicon glyphicon-cart"></span> Cart</a></li>      
-        </ul>
       </div>
     </div>
   </nav>
+  <!-- <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <span class="navbar-brand">Dropdowns in navbar</span>
+      <button class="navbar-toggler" type="button" aria-controls="navbarContent" [attr.aria-expanded]="!collapsed" aria-label="Toggle navigation" (click)="collapsed = !collapsed">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item" ngbDropdown>
+            <a class="nav-link" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown1" role="button">
+              Static
+            </a>
+            <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu">
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Action</a>
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Another action</a>
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Something else here</a>
+            </div>
+          </li>
+    
+          <li class="nav-item" ngbDropdown>
+            <a class="nav-link" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown2" role="button">
+              Static right
+            </a>
+            <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-right">
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Action</a>
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Another action</a>
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Something else here</a>
+            </div>
+          </li>
+    
+          <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-right">
+            <a class="nav-link" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown3" role="button">
+              Dynamic
+            </a>
+            <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Action</a>
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Another action</a>
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Something else here</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav> -->
 </div>
-<div>
+<div class="front">
     <router-outlet></router-outlet>
 </div>
-<!-- <div class="footer">
-    <p>This is a footer.</p>
-</div> -->
+
 </body>
 </html>

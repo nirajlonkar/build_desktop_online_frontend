@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
+import * as toastr from "toastr";
 
 
 @Component({
@@ -51,11 +52,13 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('user',JSON.stringify(this.user));
         localStorage.setItem('flag','true');
         this.router.navigate(['/home']);
+        toastr.success('Title',"asd");
+        
       } 
       else if(this.user.type == "CUSTOMER")
       {
         console.log("in customer");
-        sessionStorage['login_status'] = '1';
+        sessionStorage['login_status'] = this.user.id;
         localStorage.setItem('role',this.user.type);
         sessionStorage.setItem('user',JSON.stringify(this.user));
         localStorage.setItem('flag','true');
@@ -64,7 +67,7 @@ export class LoginComponent implements OnInit {
       else
       {
         console.log("in msg");
-
+        toastr.error("Error");
         this.message = "Email Id / password is wrong!";
       }
   });

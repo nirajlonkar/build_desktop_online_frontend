@@ -1,4 +1,4 @@
-<div class="table-stripped">
+<!-- <div class="table-stripped">
     <h1 style="text-align: center">Usesr Details</h1>
     <table class="table table-striped table-hover">
         <thead>
@@ -22,5 +22,30 @@
         </tr>
         </tbody>
     </table>
+</div> -->
+
+<div class="container">
+    <div class="listWrap">
+        <ul class="list">
+            <li>
+                <span>Id</span>
+                <span>Name</span>
+                <span>Email</span>
+                <span>Contact</span>                
+                <span>Builds</span>
+                <span>Role</span>
+            </li>
+            <li *ngFor="let user of userlist">
+                <span>{{user.id}}</span>
+                <span>{{user.name}}</span>
+                <span>{{user.email}}</span>
+                <span>{{user.contact}}</span>
+                <!-- <span>{{user.type}}</span> -->
+                <span>{{user.builds}}</span>
+                <span *ngIf="user.type=='ADMIN'"><span class="label label-info">{{user.type}}</span></span>
+                <span *ngIf="user.type=='CUSTOMER'"><span class="label label-primary">{{user.type}}</span></span>
+            </li>
+        </ul>
+    </div>
 </div>
   

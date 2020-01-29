@@ -1,4 +1,4 @@
-<div class="table-striped">
+<!-- <div class="table-striped">
         <table class="table">
             <col width=1%>
             <thead style="text-align: center">
@@ -14,7 +14,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let c of component">
+            <tr *ngFor="let c of component">c
                 <td class="center">{{c.id}}</td>
                 <td class="center">{{c.type}}</td>
                 <td>{{c.name}}</td>
@@ -30,4 +30,47 @@
             </tbody>
         </table>
         <div><button (click)="AddNew()" class="btn btn-primary" style="width: 100%">Add Component</button></div>
-    </div>
+    </div> -->
+
+    <div class="container">
+
+            <div class="listWrap">
+            
+                <ul class="list">
+                
+                    <li>
+                        <span>ID</span>
+                        <span>Type</span>
+                        <span>Name</span>
+                        <span>Model</span>
+                        <span>Description</span>
+                        <span>Image</span>
+                        <span>Price</span>
+                        <span>Action</span>
+                    </li>
+                    <li *ngFor="let c of component">
+                        <span>{{c.id}}</span>
+                        <span>{{c.type}}</span>
+                        <span>{{c.name}}</span>
+                        <!-- <span><span class="label label-warning">Manager</span></span> -->
+                        <span>{{c.model_no}}</span>
+                        <span>{{c.desc}}</span>
+                        <span>{{c.image}}</span>
+                        <span>{{c.price}}</span>
+                        <span>
+                            <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                                <a class="btn btn-danger" routerLink="/delete-component/{{c.id}}">Delete</a>
+                                <a class="btn btn-info" routerLink="/edit-component/{{c.id}}">Edit</a>
+                                <!-- <button type="button" class="btn btn-default">Edit</button>
+                                <button type="button" class="btn btn-default" disabled>Delete</button> -->
+                            </div>
+                        </span>
+                    </li>
+                </ul>
+                <span>
+                        <div><button (click)="AddNew()" class="btn btn-primary" style="width: 100%">Add Component</button></div>    
+                </span>
+        
+            </div>
+        
+        </div>
