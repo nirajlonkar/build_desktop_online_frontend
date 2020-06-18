@@ -22,7 +22,7 @@
     "@angular/router": "~8.2.14",
     "@ng-bootstrap/ng-bootstrap": "^5.2.1",
     "@types/toastr": "^2.1.37",
-    "angular": "^1.7.9",
+    "angular": "^1.8.0",
     "bootstrap": "^3.3.7",
     "ngx-toastr": "^11.3.2",
     "rxjs": "~6.4.0",
